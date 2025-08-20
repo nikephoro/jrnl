@@ -1,0 +1,56 @@
+    <main class="main-content">
+      <section class="hero">
+          <div class="container">
+              <div class="hero-image">
+                <img src="assets/images/mirrorgif2.gif" 
+                  alt="Image of a hand touching a liquid mirror"
+                class="gif">
+              </div>
+              <div class="hero-content">
+                  <p>Μια minimal πλατφόρμα για να μάθετε τον εαυτό σας</p>
+                  <div class="cta-buttons-oval">
+                    <a routerLink="/login" class="btn primary">Είσοδος</a>
+                    <a routerLink="/signup" class="btn secondary">Εγγραφή</a>
+                    </div>
+              </div>
+          </div>
+      </section>
+      <section class="guest-writer">
+        <div class="container">
+            <div class="writing-box">
+              <input 
+                id="typewriter-text"
+                type="text"
+                class="writing-input"
+                (input)="onUserInput($event)"
+                placeholder=""
+                autocomplete="off"
+              />
+            </div>
+        </div>
+        </section>
+    </main>
+
+    <!-- Talkbox Section -->
+    <!-- <section class="features">
+        <div class="container">
+            <h2>Γιατί να επιλέξετε το jrnl;</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>Απόλυτη Ιδιωτικότητα</h3>
+                    <p>Κανείς δεν έχει πρόσβαση στις σημειώσεις σας</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏱️</div>
+                    <h3>Αυτόματη Χρονοσφραγίδα</h3>
+                    <p>Κάθε καταχώρηση χρονολογείται αυτόματα</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📚</div>
+                    <h3>Ιστορικό Σκέψεων</h3>
+                    <p>Δείτε την εξέλιξή  σας με τον καιρό</p>
+                </div>
+            </div>
+        </div>
+    </section> -->

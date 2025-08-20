@@ -1,0 +1,105 @@
+<div class="signup-container">
+  <h2>Δημιουργία Λογαριασμού</h2>
+  
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Όνομα -->
+    <div class="form-group">
+      <label for="firstName">Όνομα *</label>
+      <input type="text" id="firstName" formControlName="firstName">
+      @if (signupForm.get('firstName')?.invalid && 
+          (signupForm.get('firstName')?.dirty || signupForm.get('firstName')?.touched)) {
+        <div class="error-message">
+          @if (signupForm.get('firstName')?.errors?.['required']) {
+            <span>Το όνομα είναι υποχρεωτικό</span>
+          }
+          @if (signupForm.get('firstName')?.errors?.['minlength']) {
+            <span>Τουλάχιστον 2 χαρακτήρες</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Επίθετο -->
+    <div class="form-group">
+      <label for="lastName">Επίθετο *</label>
+      <input type="text" id="lastName" formControlName="lastName">
+      @if (signupForm.get('lastName')?.invalid && 
+          (signupForm.get('lastName')?.dirty || signupForm.get('lastName')?.touched)) {
+        <div class="error-message">Το επίθετο είναι υποχρεωτικό</div>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" formControlName="email">
+      @if (signupForm.get('email')?.invalid && 
+          (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)) {
+        <div class="error-message">
+          @if (signupForm.get('email')?.errors?.['required']) {
+            <span>Το email είναι υποχρεωτικό</span>
+          }
+          @if (signupForm.get('email')?.errors?.['email']) {
+            <span>Μη έγκυρη διεύθυνση email</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Κωδικός -->
+    <div class="form-group">
+      <label for="password">Κωδικός *</label>
+      <input type="password" id="password" formControlName="password">
+      @if (signupForm.get('password')?.invalid && 
+          (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)) {
+        <div class="error-message">
+          @if (signupForm.get('password')?.errors?.['required']) {
+            <span>Ο κωδικός είναι υποχρεωτικός</span>
+          }
+          @if (signupForm.get('password')?.errors?.['minlength']) {
+            <span>Τουλάχιστον 6 χαρακτήρες</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Έτος Γέννησης -->
+   <div class="form-group">
+  <label for="birthYear">Έτος Γέννησης *</label>
+  <input type="number" id="birthYear" formControlName="birthYear"
+         min="1900" [max]="minBirthYear"> <!-- Αλλαγή εδώ -->
+  
+  @if (signupForm.get('birthYear')?.invalid && 
+      (signupForm.get('birthYear')?.dirty || signupForm.get('birthYear')?.touched)) {
+    <div class="error-message">
+      @if (signupForm.get('birthYear')?.errors?.['required']) {
+        <span>Το έτος γέννησης είναι υποχρεωτικό</span>
+      }
+      @if (signupForm.get('birthYear')?.errors?.['min'] || 
+           signupForm.get('birthYear')?.errors?.['max']) {
+        <span>Έγκυρο έτος: 1900 - {{ minBirthYear }}</span> <!-- Αλλαγή εδώ -->
+      }
+    </div>
+  }
+</div>
+
+    <!-- Φύλο -->
+      <div class="form-group">
+    <label>Φύλο *</label>
+    <div class="radio-options-container">
+      @for (gender of genders; track gender) {
+        <div class="radio-option">
+          <input type="radio" id="{{gender}}" formControlName="gender" [value]="gender">
+          <label [for]="gender">{{ gender }}</label>
+        </div>
+      }
+    </div>
+    @if (signupForm.get('gender')?.invalid && 
+        (signupForm.get('gender')?.dirty || signupForm.get('gender')?.touched)) {
+      <div class="error-message">Επιλογή φύλου είναι υποχρεωτική</div>
+    }
+  </div>
+
+    <button type="submit" [disabled]="!signupForm.valid">Εγγραφή</button>
+  </form>
+</div>

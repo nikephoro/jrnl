@@ -1,0 +1,35 @@
+<div class="login-container">
+  <h2>Σύνδεση</h2>
+  
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Εισάγετε το όνομα χρήστη" formControlName="username">
+      @if (loginForm.get('username')?.invalid && 
+          (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)) {
+        <div class="error-message">
+          Το username είναι υποχρεωτικό
+        </div>
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Εισάγετε τον κωδικό πρόσβασης"formControlName="password">
+      @if (loginForm.get('password')?.invalid && 
+          (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)) {
+        <div class="error-message">
+             Ο κωδικός είναι υποχρεωτικός
+        </div>
+      }
+    </div>
+
+    <button type="submit" [disabled]="!loginForm.valid">Σύνδεση</button>
+  </form>
+
+  <div class="login-links">
+    <p>Δεν έχετε λογαριασμό; <a routerLink="/signup">Δημιουργήστε έναν εδώ</a></p>
+  </div>
+</div>
