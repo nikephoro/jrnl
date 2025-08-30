@@ -20,10 +20,10 @@ export class Signup {
   signupForm: FormGroup;
 
   constructor() {
-    // Υπολογισμός ετών στον constructor
+    // Υπολογισμός ετών στον constructor`
     this.currentYear = new Date().getFullYear();
-    this.minBirthYear = this.currentYear - 13;
-    
+    this.minBirthYear = this.currentYear - 100;
+    ``
     this.signupForm = this.createForm();
   }
 
